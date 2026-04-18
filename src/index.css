@@ -1,22 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #02020a;
-  --surface: #080818;
-  --surface-alt: #0d0d22;
-  --border: #1a1a3a;
-  --border-glow: #00f5ff33;
+  --bg: #04020a;
+  --surface: #0a0614;
+  --surface-alt: #100a1e;
+  --border: #1e1030;
+  --border-glow: #9b30ff33;
 
-  --text: #e0e8ff;
-  --text-dim: #6a7aaa;
-  --text-muted: #3a4060;
+  --text: #e8e0ff;
+  --text-dim: #7a6aaa;
+  --text-muted: #3a2a60;
 
-  --cyan: #00f5ff;
-  --cyan-dim: rgba(0, 245, 255, 0.1);
-  --cyan-glow: rgba(0, 245, 255, 0.25);
-  --purple: #bf00ff;
-  --purple-dim: rgba(191, 0, 255, 0.1);
-  --purple-glow: rgba(191, 0, 255, 0.25);
+  /* Purple primária — baseada na logo */
+  --purple: #a855f7;
+  --purple-bright: #bf00ff;
+  --purple-dim: rgba(168, 85, 247, 0.12);
+  --purple-glow: rgba(168, 85, 247, 0.3);
+
+  /* Violeta escuro da logo */
+  --violet: #6d28d9;
+  --violet-dim: rgba(109, 40, 217, 0.15);
+
+  /* Magenta como acento secundário */
+  --magenta: #f000ff;
+  --magenta-dim: rgba(240, 0, 255, 0.1);
+
+  /* Ciano mantido como detalhe */
+  --cyan: #00e5ff;
+  --cyan-dim: rgba(0, 229, 255, 0.08);
+  --cyan-glow: rgba(0, 229, 255, 0.2);
+
   --green: #00ff88;
   --green-dim: rgba(0, 255, 136, 0.1);
   --amber: #ffaa00;
@@ -43,8 +56,8 @@ body::before {
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(168, 85, 247, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 85, 247, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
   z-index: 0;
@@ -58,19 +71,19 @@ body::before {
 .font-display { font-family: var(--font-display); }
 .font-mono { font-family: var(--font-mono); }
 
-.glow-cyan {
-  box-shadow: 0 0 20px var(--cyan-glow), 0 0 40px rgba(0, 245, 255, 0.1);
+.glow-purple {
+  box-shadow: 0 0 20px var(--purple-glow), 0 0 40px rgba(168, 85, 247, 0.1);
 }
-.text-glow-cyan { text-shadow: 0 0 10px var(--cyan), 0 0 20px var(--cyan-glow); }
-.text-glow-purple { text-shadow: 0 0 10px var(--purple), 0 0 20px var(--purple-glow); }
+.text-glow-purple { text-shadow: 0 0 12px var(--purple), 0 0 24px var(--purple-glow); }
+.text-glow-magenta { text-shadow: 0 0 10px var(--magenta), 0 0 20px rgba(240,0,255,0.3); }
 
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 8px var(--cyan-glow); }
-  50% { box-shadow: 0 0 24px var(--cyan-glow), 0 0 48px rgba(0,245,255,0.1); }
+  0%, 100% { box-shadow: 0 0 6px var(--purple-glow); }
+  50% { box-shadow: 0 0 20px var(--purple-glow), 0 0 40px rgba(168,85,247,0.1); }
 }
 @keyframes slide-in-right {
   from { transform: translateX(100%); }
@@ -79,10 +92,6 @@ body::before {
 @keyframes flicker {
   0%, 89%, 91%, 93%, 100% { opacity: 1; }
   90%, 92% { opacity: 0.7; }
-}
-@keyframes hero-glow {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
 }
 
 .animate-fade-up { animation: fade-up 0.5s ease forwards; }
@@ -102,20 +111,20 @@ body::before {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  background: linear-gradient(90deg, transparent, var(--purple), transparent);
   opacity: 0;
   transition: opacity 0.3s;
 }
 .product-card:hover {
-  border-color: rgba(0, 245, 255, 0.3);
+  border-color: rgba(168, 85, 247, 0.35);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 245, 255, 0.08);
+  box-shadow: 0 12px 40px rgba(168, 85, 247, 0.1);
 }
 .product-card:hover::after { opacity: 1; }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--cyan) 0%, #0088ff 50%, var(--purple) 100%);
-  color: var(--bg);
+  background: linear-gradient(135deg, var(--purple) 0%, var(--violet) 50%, var(--magenta) 100%);
+  color: #fff;
   font-family: var(--font-display);
   font-size: 10px;
   font-weight: 700;
@@ -127,7 +136,7 @@ body::before {
   position: relative;
   overflow: hidden;
 }
-.btn-primary:hover { filter: brightness(1.15); transform: scale(1.02); }
+.btn-primary:hover { filter: brightness(1.2); transform: scale(1.02); }
 .btn-primary:active { transform: scale(0.97); }
 
 .btn-ghost {
@@ -143,17 +152,17 @@ body::before {
   transition: all 0.2s;
 }
 .btn-ghost:hover {
-  border-color: var(--cyan);
-  color: var(--cyan);
-  box-shadow: 0 0 12px var(--cyan-dim);
+  border-color: var(--purple);
+  color: var(--purple);
+  box-shadow: 0 0 12px var(--purple-dim);
 }
 .btn-ghost.active {
-  border-color: var(--cyan);
-  color: var(--cyan);
-  background: var(--cyan-dim);
+  border-color: var(--purple);
+  color: var(--purple);
+  background: var(--purple-dim);
 }
 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
+::-webkit-scrollbar-thumb:hover { background: var(--purple); }

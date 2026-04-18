@@ -10,7 +10,7 @@ export interface Product {
   featured?: boolean
 }
 
-export type Category = 'chaveiros' | 'miniaturas' | 'decoracao' | 'personalizados'
+export type Category = 'chaveiros' | 'times' | 'personalizados'
 
 export interface CartItem {
   product: Product

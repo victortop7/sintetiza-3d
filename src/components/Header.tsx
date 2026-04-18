@@ -1,4 +1,4 @@
-import { ShoppingCart, Zap } from 'lucide-react'
+import { ShoppingCart } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 
 interface HeaderProps {
@@ -11,7 +11,7 @@ export function Header({ onCartOpen }: HeaderProps) {
   return (
     <header
       style={{
-        background: 'rgba(2, 2, 10, 0.85)',
+        background: 'rgba(4, 2, 10, 0.88)',
         backdropFilter: 'blur(16px)',
         borderBottom: '1px solid var(--border)',
         position: 'sticky',
@@ -21,37 +21,29 @@ export function Header({ onCartOpen }: HeaderProps) {
     >
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         {/* Logo */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{
-            width: 32, height: 32,
-            background: 'linear-gradient(135deg, var(--cyan), var(--purple))',
-            borderRadius: 6,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            <Zap size={16} color="#02020a" strokeWidth={2.5} />
-          </div>
-          <div>
-            <div className="font-display animate-flicker" style={{ fontSize: 14, fontWeight: 700, color: 'var(--cyan)', letterSpacing: '0.08em', lineHeight: 1 }}>
-              SINTETIZA
-            </div>
-            <div className="font-display" style={{ fontSize: 9, color: 'var(--text-muted)', letterSpacing: '0.2em' }}>
-              3D STORE
-            </div>
-          </div>
-        </div>
+        <a href="#" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+          <img
+            src="/sintetiza-3d/logo.png"
+            alt="Sintetiza 3D"
+            style={{ height: 38, objectFit: 'contain', filter: 'drop-shadow(0 0 8px rgba(168,85,247,0.4))' }}
+          />
+        </a>
 
         {/* Nav */}
         <nav style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
-          {['Produtos', 'Personalizados', 'Sobre'].map(item => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="font-display" style={{
+          {[
+            { label: 'Produtos', href: '#produtos' },
+            { label: 'Personalizados', href: '#personalizados' },
+          ].map(item => (
+            <a key={item.label} href={item.href} className="font-display" style={{
               fontSize: 10, letterSpacing: '0.12em', color: 'var(--text-dim)',
               textDecoration: 'none', textTransform: 'uppercase',
               transition: 'color 0.2s',
             }}
-              onMouseEnter={e => (e.currentTarget.style.color = 'var(--cyan)')}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--purple)')}
               onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-dim)')}
             >
-              {item}
+              {item.label}
             </a>
           ))}
         </nav>
@@ -64,9 +56,9 @@ export function Header({ onCartOpen }: HeaderProps) {
           transition: 'all 0.2s',
         }}
           onMouseEnter={e => {
-            e.currentTarget.style.borderColor = 'var(--cyan)'
-            e.currentTarget.style.color = 'var(--cyan)'
-            e.currentTarget.style.boxShadow = '0 0 12px var(--cyan-dim)'
+            e.currentTarget.style.borderColor = 'var(--purple)'
+            e.currentTarget.style.color = 'var(--purple)'
+            e.currentTarget.style.boxShadow = '0 0 12px var(--purple-dim)'
           }}
           onMouseLeave={e => {
             e.currentTarget.style.borderColor = 'var(--border)'
@@ -79,8 +71,8 @@ export function Header({ onCartOpen }: HeaderProps) {
             <span style={{
               position: 'absolute', top: -6, right: -6,
               width: 18, height: 18, borderRadius: '50%',
-              background: 'linear-gradient(135deg, var(--cyan), var(--purple))',
-              color: 'var(--bg)', fontSize: 9, fontWeight: 700,
+              background: 'linear-gradient(135deg, var(--purple), var(--magenta))',
+              color: '#fff', fontSize: 9, fontWeight: 700,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontFamily: 'var(--font-display)',
             }}>
