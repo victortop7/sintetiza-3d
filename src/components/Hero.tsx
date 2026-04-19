@@ -32,18 +32,22 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Logo grande no hero */}
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 32 }}>
-        <img
-          src="/sintetiza-3d/logo.png"
-          alt="Sintetiza 3D"
-          style={{
-            height: 'clamp(80px, 12vw, 140px)',
-            objectFit: 'contain',
-            filter: 'drop-shadow(0 0 20px rgba(168,85,247,0.5)) drop-shadow(0 0 40px rgba(168,85,247,0.2))',
-          }}
-          className="animate-flicker"
-        />
+      {/* Nome em display neon */}
+      <div style={{ marginBottom: 24 }}>
+        <div className="font-display" style={{
+          fontSize: 'clamp(42px, 7vw, 88px)',
+          fontWeight: 900,
+          letterSpacing: '0.04em',
+          lineHeight: 1,
+          background: 'linear-gradient(135deg, #ffffff 0%, #c084fc 40%, #a855f7 70%, #7c3aed 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          textShadow: 'none',
+          filter: 'drop-shadow(0 0 20px rgba(168,85,247,0.5))',
+        }}>
+          SINTETIZA 3D
+        </div>
       </div>
 
       <p style={{

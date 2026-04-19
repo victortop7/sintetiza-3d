@@ -9,23 +9,22 @@ export function Header({ onCartOpen }: HeaderProps) {
   const { count } = useCart()
 
   return (
-    <header
-      style={{
-        background: 'rgba(4, 2, 10, 0.88)',
-        backdropFilter: 'blur(16px)',
-        borderBottom: '1px solid var(--border)',
-        position: 'sticky',
-        top: 0,
-        zIndex: 100,
-      }}
-    >
+    <header style={{
+      background: 'rgba(255,255,255,0.95)',
+      backdropFilter: 'blur(16px)',
+      borderBottom: '2px solid rgba(168,85,247,0.25)',
+      position: 'sticky',
+      top: 0,
+      zIndex: 100,
+      boxShadow: '0 2px 20px rgba(168,85,247,0.1)',
+    }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         {/* Logo */}
         <a href="#" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
           <img
             src="/sintetiza-3d/logo.png"
             alt="Sintetiza 3D"
-            style={{ height: 38, objectFit: 'contain', filter: 'drop-shadow(0 0 8px rgba(168,85,247,0.4))' }}
+            style={{ height: 40, objectFit: 'contain', display: 'block' }}
           />
         </a>
 
@@ -36,12 +35,11 @@ export function Header({ onCartOpen }: HeaderProps) {
             { label: 'Personalizados', href: '#personalizados' },
           ].map(item => (
             <a key={item.label} href={item.href} className="font-display" style={{
-              fontSize: 10, letterSpacing: '0.12em', color: 'var(--text-dim)',
-              textDecoration: 'none', textTransform: 'uppercase',
-              transition: 'color 0.2s',
+              fontSize: 10, letterSpacing: '0.12em', color: '#5b21b6',
+              textDecoration: 'none', textTransform: 'uppercase', transition: 'color 0.2s',
             }}
-              onMouseEnter={e => (e.currentTarget.style.color = 'var(--purple)')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-dim)')}
+              onMouseEnter={e => (e.currentTarget.style.color = '#a855f7')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#5b21b6')}
             >
               {item.label}
             </a>
@@ -50,20 +48,19 @@ export function Header({ onCartOpen }: HeaderProps) {
 
         {/* Cart */}
         <button onClick={onCartOpen} style={{
-          position: 'relative', background: 'transparent', border: '1px solid var(--border)',
+          position: 'relative', background: 'transparent',
+          border: '1px solid rgba(168,85,247,0.3)',
           borderRadius: 8, width: 40, height: 40, display: 'flex', alignItems: 'center',
-          justifyContent: 'center', cursor: 'pointer', color: 'var(--text-dim)',
+          justifyContent: 'center', cursor: 'pointer', color: '#7c3aed',
           transition: 'all 0.2s',
         }}
           onMouseEnter={e => {
-            e.currentTarget.style.borderColor = 'var(--purple)'
-            e.currentTarget.style.color = 'var(--purple)'
-            e.currentTarget.style.boxShadow = '0 0 12px var(--purple-dim)'
+            e.currentTarget.style.borderColor = '#a855f7'
+            e.currentTarget.style.background = 'rgba(168,85,247,0.08)'
           }}
           onMouseLeave={e => {
-            e.currentTarget.style.borderColor = 'var(--border)'
-            e.currentTarget.style.color = 'var(--text-dim)'
-            e.currentTarget.style.boxShadow = 'none'
+            e.currentTarget.style.borderColor = 'rgba(168,85,247,0.3)'
+            e.currentTarget.style.background = 'transparent'
           }}
         >
           <ShoppingCart size={16} />
@@ -71,7 +68,7 @@ export function Header({ onCartOpen }: HeaderProps) {
             <span style={{
               position: 'absolute', top: -6, right: -6,
               width: 18, height: 18, borderRadius: '50%',
-              background: 'linear-gradient(135deg, var(--purple), var(--magenta))',
+              background: 'linear-gradient(135deg, #a855f7, #bf00ff)',
               color: '#fff', fontSize: 9, fontWeight: 700,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontFamily: 'var(--font-display)',
